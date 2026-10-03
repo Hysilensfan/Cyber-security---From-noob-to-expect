@@ -1,0 +1,518 @@
+/* =========================================================
+   Cyber Security
+   Main Stylesheet
+   ========================================================= */
+
+
+/* =========================================================
+   CSS Variables
+   ========================================================= */
+
+:root {
+
+    --banner: #EE82EE;
+
+    --purple: #6a1b9a;
+
+    --yellow: #FFD93D;
+
+    --btn-img: url(
+        "https://png.pngtree.com/png-vector/20220404/ourmid/pngtree-buttons-games-button-illustration-blue-png-image_4526877.png"
+    );
+}
+
+
+/* =========================================================
+   Reset
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================================
+   Body
+   ========================================================= */
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family:
+        "Segoe UI",
+        "Noto Sans TC",
+        "Microsoft JhengHei",
+        sans-serif;
+
+    color: var(--purple);
+
+    background:
+        linear-gradient(
+            rgba(255, 245, 200, .55),
+            rgba(238, 130, 238, .35)
+        ),
+        url(
+            "https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/476166917_639190511956476_2830561025047740793_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1152&ctp=s960x960&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iXI0xsfYiJkQ7kNvwF3RXND&_nc_oc=AdrK-Pc-9Q0ecLNocMjby9leBLwytdLZ3v8IaA71_wbV0F02aCaJd2C5XSfaXE3PGuA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=unmpNRCjOrUQsbIs0DM54g&_nc_ss=7b289&oh=00_AQMMsCsxxEgcqOIQPIc3eH_Z1G4pUYBv_-EkyRcRFTWnpQ&oe=6AC62072"
+        )
+        center / cover fixed no-repeat;
+}
+
+
+/* =========================================================
+   Header / Footer Banner
+   ========================================================= */
+
+.banner {
+
+    background: var(--banner);
+
+    height: clamp(
+        70px,
+        12vw,
+        140px
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 0 var(--yellow);
+}
+
+
+footer.banner {
+
+    box-shadow:
+        0 -4px 0 var(--yellow);
+}
+
+
+/* Banner title */
+
+.banner .title {
+
+    padding-left: 90px;
+
+    font-size:
+        clamp(
+            1.1rem,
+            3.5vw,
+            2.2rem
+        );
+
+    font-weight: 800;
+
+    color: #fff;
+
+    text-shadow:
+        2px 2px 0 var(--purple);
+}
+
+
+/* Footer title */
+
+footer.banner .title {
+
+    padding-left: 20px;
+
+    font-size:
+        clamp(
+            .9rem,
+            2.5vw,
+            1.4rem
+        );
+}
+
+
+/* Banner image */
+
+.banner img {
+
+    height: 100%;
+
+    width: auto;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =========================================================
+   Menu
+   ========================================================= */
+
+.menu-wrap {
+
+    position: fixed;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 10;
+}
+
+
+/* Menu button */
+
+.menu-btn {
+
+    width: 56px;
+    height: 56px;
+
+    border:
+        3px solid var(--purple);
+
+    border-radius: 50%;
+
+    background:
+        var(--yellow);
+
+    cursor: pointer;
+
+    display: grid;
+
+    place-items: center;
+
+    transition:
+        transform .2s;
+}
+
+
+.menu-btn:hover {
+
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+}
+
+
+/* Menu icon */
+
+.menu-btn svg {
+
+    width: 30px;
+    height: 30px;
+}
+
+
+/* Menu list */
+
+.menu-list {
+
+    display: none;
+
+    margin-top: 8px;
+
+    background: #fff;
+
+    border:
+        3px solid var(--purple);
+
+    border-radius: 16px;
+
+    padding: 8px;
+
+    min-width: 210px;
+}
+
+
+/* Open state */
+
+.menu-list.open {
+
+    display: block;
+}
+
+
+/* Menu links */
+
+.menu-list a {
+
+    display: block;
+
+    padding:
+        8px 12px;
+
+    color:
+        var(--purple);
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    border-radius: 10px;
+}
+
+
+.menu-list a:hover {
+
+    background:
+        var(--yellow);
+}
+
+
+/* =========================================================
+   Main
+   ========================================================= */
+
+main {
+
+    flex: 1;
+
+    width:
+        min(
+            92%,
+            760px
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        32px 0 48px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* Main title */
+
+h2 {
+
+    text-align: center;
+
+    font-size:
+        clamp(
+            1.4rem,
+            4.5vw,
+            2.4rem
+        );
+
+    color:
+        var(--yellow);
+
+    -webkit-text-stroke:
+        2px var(--purple);
+
+    paint-order:
+        stroke fill;
+
+    text-shadow:
+        3px 3px 0 var(--purple);
+
+    margin-bottom:
+        8px;
+}
+
+
+/* =========================================================
+   Image Buttons
+   ========================================================= */
+
+.img-btn {
+
+    width:
+        min(
+            100%,
+            420px
+        );
+
+    min-height:
+        78px;
+
+    padding:
+        14px 40px;
+
+    border: none;
+
+    background:
+        var(--btn-img)
+        center /
+        100% 100%
+        no-repeat
+        transparent;
+
+    color:
+        #fff;
+
+    font-size:
+        1.15rem;
+
+    font-weight:
+        800;
+
+    text-shadow:
+        0 2px 3px
+        rgba(0, 0, 0, .6);
+
+    cursor:
+        pointer;
+
+    transition:
+        transform .15s,
+        filter .15s;
+}
+
+
+/* Hover */
+
+.img-btn:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.04)
+        rotate(-1deg);
+
+    filter:
+        brightness(1.15);
+}
+
+
+/* Active */
+
+.img-btn:active {
+
+    transform:
+        translateY(2px)
+        scale(.97);
+}
+
+
+/* Small text inside buttons */
+
+.img-btn small {
+
+    display: block;
+
+    font-size:
+        .8rem;
+
+    font-weight:
+        600;
+}
+
+
+/* =========================================================
+   MISC
+   ========================================================= */
+
+.misc-wrap {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+/* MISC sub menu */
+
+.sub-list {
+
+    display: none;
+
+    width: 100%;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                190px,
+                1fr
+            )
+        );
+
+    gap: 10px;
+
+    justify-items: center;
+
+    padding: 16px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            .6
+        );
+
+    border:
+        3px dashed
+        var(--purple);
+
+    border-radius:
+        20px;
+}
+
+
+/* Open state */
+
+.sub-list.open {
+
+    display: grid;
+
+    animation:
+        drop .3s ease;
+}
+
+
+/* Smaller buttons */
+
+.sub-list .img-btn {
+
+    min-height:
+        64px;
+
+    font-size:
+        1rem;
+
+    padding:
+        10px 28px;
+}
+
+
+/* =========================================================
+   Animation
+   ========================================================= */
+
+@keyframes drop {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-12px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            none;
+    }
+}
