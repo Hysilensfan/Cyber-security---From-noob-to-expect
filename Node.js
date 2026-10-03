@@ -1,65 +1,11 @@
-/* =========================================================
-   Cyber Security
-   Main JavaScript
-   ========================================================= */
-
-
-/**
- * Toggle an element open / closed.
- *
- * @param {HTMLElement} button
- * @param {HTMLElement} target
- */
-function toggle(button, target) {
-
-    button.addEventListener("click", () => {
-
-        const isOpen =
-            target.classList.toggle("open");
-
-        button.setAttribute(
-            "aria-expanded",
-            isOpen
-        );
+// 通用的「點一下開／關」功能
+function toggle(btn, target) {
+    btn.addEventListener('click', () => {
+        const open = target.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
     });
 }
 
+toggle(document.getElementById('menuBtn'), document.getElementById('menuList'));
+toggle(document.getElementById('miscBtn'), document.getElementById('subList'));
 
-/* =========================================================
-   Menu
-   ========================================================= */
-
-const menuButton =
-    document.getElementById("menuBtn");
-
-const menuList =
-    document.getElementById("menuList");
-
-
-if (menuButton && menuList) {
-
-    toggle(
-        menuButton,
-        menuList
-    );
-}
-
-
-/* =========================================================
-   MISC
-   ========================================================= */
-
-const miscButton =
-    document.getElementById("miscBtn");
-
-const subList =
-    document.getElementById("subList");
-
-
-if (miscButton && subList) {
-
-    toggle(
-        miscButton,
-        subList
-    );
-}
