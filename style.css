@@ -18,11 +18,17 @@ body {
     font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
     color: var(--purple);
 
-    /* 半透明紫色罩層 + 背景圖，文字才看得清楚 */
-    background:
+    /* 背景圖失效時，至少還有這個黃色底，不會變成一片白 */
+    background-color: #fff3b8;
+
+    /* 半透明罩層 + 背景圖，文字才看得清楚 */
+    background-image:
         linear-gradient(rgba(255, 245, 200, .55), rgba(238, 130, 238, .35)),
-        url("https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/476166917_639190511956476_2830561025047740793_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1152&ctp=s960x960&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iXI0xsfYiJkQ7kNvwF3RXND&_nc_oc=AdrK-Pc-9Q0ecLNocMjby9leBLwytdLZ3v8IaA71_wbV0F02aCaJd2C5XSfaXE3PGuA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=unmpNRCjOrUQsbIs0DM54g&_nc_ss=7b289&oh=00_AQMMsCsxxEgcqOIQPIc3eH_Z1G4pUYBv_-EkyRcRFTWnpQ&oe=6AC62072")
-        center / cover fixed no-repeat;
+        url("https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/476166917_639190511956476_2830561025047740793_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1152&ctp=s960x960&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iXI0xsfYiJkQ7kNvwF3RXND&_nc_oc=AdrK-Pc-9Q0ecLNocMjby9leBLwytdLZ3v8IaA71_wbV0F02aCaJd2C5XSfaXE3PGuA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=unmpNRCjOrUQsbIs0DM54g&_nc_ss=7b289&oh=00_AQMMsCsxxEgcqOIQPIc3eH_Z1G4pUYBv_-EkyRcRFTWnpQ&oe=6AC62072");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /* ===== 橫幅 header / footer ===== */
@@ -212,4 +218,3 @@ h2 {
         transform: none;
     }
 }
-
