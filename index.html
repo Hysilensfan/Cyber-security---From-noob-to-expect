@@ -4,62 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber - security/index</title>  <!-- The title -->
-
-    <!-- CSS：和 index.html 放在同一層 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 左上角 Menu -->
+    <!-- 左上角 Menu：滑鼠移上去就會打開，點擊也可以（手機用） -->
     <div class="menu-wrap">
-        <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <button class="menu-btn" id="menuBtn" data-toggle="menuList" aria-label="Menu" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="#6a1b9a" stroke-width="3" stroke-linecap="round">
                 <path d="M4 7h16M4 12h16M4 17h16"/>
             </svg>
         </button>
         <nav class="menu-list" id="menuList">
-            <a href="#">Web Security</a>
-            <a href="#">Reverse Engineering</a>
-            <a href="#">Crypto</a>
-            <a href="#">PWN</a>
-            <a href="#">MISC</a>
+            <a href="#grpWeb"    data-zh="網頁安全">Web Security</a>
+            <a href="#grpRev"    data-zh="逆向工程">Reverse Engineering</a>
+            <a href="#grpCrypto" data-zh="密碼學">Crypto</a>
+            <a href="#grpPwn"    data-zh="PWN">PWN</a>
+            <a href="#grpMisc"   data-zh="MISC">MISC</a>
         </nav>
     </div>
 
     <header class="banner">
-        <span class="title">Cyber Security</span>
+        <span class="title" data-zh="資訊安全">Cyber Security</span>
         <img src="https://gd-hbimg.huaban.com/46ae767fe82ab1ef3d2405ead3c0c043c558d28cc11f7-VFiOAX_fw658" alt="banner image" referrerpolicy="no-referrer">
     </header>
 
     <main>
-        <h2>Cyber security - Five major areas</h2>
+        <h2 data-zh="資訊安全 - 五大領域">Cyber security - Five major areas</h2>
 
-        <button class="img-btn">Web<small>Web Security</small></button>
-        <button class="img-btn">Reverse Engineering</button>
-        <button class="img-btn">Crypto<small>Cryptography</small></button>
-        <button class="img-btn">PWN<small>(Binary Vulnerability Exploitation)</small></button>
+        <!-- 1. Web Security -->
+        <div class="group" id="grpWeb">
+            <button class="img-btn" data-toggle="subWeb" aria-expanded="false" aria-controls="subWeb" data-zh="網頁安全">Web Security</button>
+            <div class="sub-list" id="subWeb">
+                <button class="img-btn"><span data-zh="XSS">XSS</span><small data-zh="(跨站腳本攻擊)">(Cross-site scripting)</small></button>
+                <button class="img-btn"><span data-zh="CSRF">CSRF</span><small data-zh="(跨站請求偽造)">(Cross site request forgery)</small></button>
+                <button class="img-btn"><span data-zh="DOS">DOS</span><small data-zh="(阻斷服務攻擊)">(Denial of service)</small></button>
+                <button class="img-btn"><span data-zh="DDOS">DDOS</span><small data-zh="(分散式阻斷服務攻擊)">(Distributed DOS)</small></button>
+                <button class="img-btn"><span data-zh="IDOR">IDOR</span><small data-zh="(不安全的直接物件參考漏洞)">(Insecure Direct Object Reference Vulnerability)</small></button>
+                <button class="img-btn" data-zh="點擊劫持">Click Jacking</button>
+                <button class="img-btn" data-zh="指令注入">Command injection</button>
+                <button class="img-btn" data-zh="一般網路釣魚">Common Phishing</button>
+                <button class="img-btn" data-zh="魚叉式網路釣魚">Spear Phishing</button>
+                <button class="img-btn" data-zh="鯨釣式網路釣魚">Whaling Phishing</button>
+                <button class="img-btn" data-zh="惡意軟體">Malware</button>
+                <button class="img-btn" data-zh="網址操弄">URL manipulation</button>
+                <button class="img-btn" data-zh="會話劫持">Session jacking</button>
+                <button class="img-btn" data-zh="生日攻擊">birthday</button>
+                <button class="img-btn" data-zh="其他選項">Else option</button>
+            </div>
+        </div>
 
-        <div class="misc-wrap">
-            <button class="img-btn" id="miscBtn" aria-expanded="false" aria-controls="subList">MISC<small>(Miscellaneous)</small></button>
-            <div class="sub-list" id="subList">
-                <button class="img-btn">OSINT</button>
-                <button class="img-btn">Forensics</button>
-                <button class="img-btn">Stego</button>
-                <button class="img-btn">Block chain</button>
-                <button class="img-btn">Traffic</button>
-                <button class="img-btn">Flask/Jail</button>
-                <button class="img-btn">Linux/Windows command</button>
-                <button class="img-btn">Source code Analysis/Coding</button>
-                <button class="img-btn">Else option</button>
+        <!-- 2. Reverse Engineering -->
+        <div class="group" id="grpRev">
+            <button class="img-btn" data-toggle="subRev" aria-expanded="false" aria-controls="subRev" data-zh="逆向工程">Reverse Engineering</button>
+            <div class="sub-list" id="subRev">
+                <button class="img-btn" data-zh="電腦系統架構">Computer system architecture</button>
+                <button class="img-btn" data-zh="靜態分析">Static analysis</button>
+                <button class="img-btn" data-zh="動態分析">Dynamic analysis</button>
+                <button class="img-btn" data-zh="除錯工具">Debug tools</button>
+                <button class="img-btn" data-zh="記憶體存取">Memory access</button>
+                <button class="img-btn" data-zh="CPU 工作流程">CPU workflow</button>
+                <button class="img-btn" data-zh="漏洞分析">Vulnerability Analysis</button>
+                <button class="img-btn" data-zh="破解與修補">Crack and Pitch</button>
+                <button class="img-btn" data-zh="修改與測試">Modification and testing</button>
+                <button class="img-btn" data-zh="其他選項">Else option</button>
+            </div>
+        </div>
+
+        <!-- 3. Crypto -->
+        <div class="group" id="grpCrypto">
+            <button class="img-btn" data-toggle="subCrypto" aria-expanded="false" aria-controls="subCrypto" data-zh="密碼學">Crypto</button>
+            <div class="sub-list" id="subCrypto">
+                <button class="img-btn" data-zh="加密(解密)">En(De)crption</button>
+                <button class="img-btn" data-zh="對稱式密碼學">Symmetric Cryptography</button>
+                <button class="img-btn" data-zh="非對稱式密碼學">Asymmetric Cryptography</button>
+                <button class="img-btn" data-zh="數位簽章">Digital Signature</button>
+                <button class="img-btn" data-zh="字典攻擊">Dictionary Attack</button>
+                <button class="img-btn"><span data-zh="MITM">MITM</span><small data-zh="(中間人攻擊)">(Man in the middle)</small></button>
+                <button class="img-btn" data-zh="雜湊值">Hash values</button>
+                <button class="img-btn" data-zh="CIA 三要素">The CIA Triad</button>
+                <button class="img-btn" data-zh="身分驗證">Identity verification</button>
+                <button class="img-btn" data-zh="其他選項">Else option</button>
+            </div>
+        </div>
+
+        <!-- 4. PWN -->
+        <div class="group" id="grpPwn">
+            <button class="img-btn" data-toggle="subPwn" aria-expanded="false" aria-controls="subPwn"><span data-zh="PWN">PWN</span><small data-zh="(二進位漏洞利用)">(Binary Vulnerability Exploitation)</small></button>
+            <div class="sub-list" id="subPwn">
+                <button class="img-btn" data-zh="零日(一日)漏洞">Zero(One) Day</button>
+                <button class="img-btn" data-zh="記憶體破壞">Memory Corruption</button>
+                <button class="img-btn" data-zh="防護機制繞過">Mitigation Bypasses</button>
+                <button class="img-btn" data-zh="核心與虛擬機監控器">Kernel &amp; Hypervisor</button>
+                <button class="img-btn" data-zh="其他選項">Else option</button>
+            </div>
+        </div>
+
+        <!-- 5. MISC -->
+        <div class="group" id="grpMisc">
+            <button class="img-btn" data-toggle="subMisc" aria-expanded="false" aria-controls="subMisc"><span data-zh="MISC">MISC</span><small data-zh="(雜項)">(Miscellaneous)</small></button>
+            <div class="sub-list" id="subMisc">
+                <button class="img-btn" data-zh="開源情報">OSINT</button>
+                <button class="img-btn" data-zh="數位鑑識">Forensics</button>
+                <button class="img-btn" data-zh="隱寫術">Stego</button>
+                <button class="img-btn" data-zh="區塊鏈">Block chain</button>
+                <button class="img-btn" data-zh="流量分析">Traffic</button>
+                <button class="img-btn" data-zh="Flask / 沙箱逃逸">Flask/Jail</button>
+                <button class="img-btn" data-zh="Linux / Windows 指令">Linux/Windows command</button>
+                <button class="img-btn" data-zh="原始碼分析 / 程式設計">Source code Analysis/Coding</button>
+                <button class="img-btn" data-zh="其他選項">Else option</button>
             </div>
         </div>
     </main>
 
     <footer class="banner">
-        <span class="title">© Cyber Security</span>
+        <span class="title" data-zh="© 資訊安全">© Cyber Security</span>
         <img src="https://gd-hbimg.huaban.com/46ae767fe82ab1ef3d2405ead3c0c043c558d28cc11f7-VFiOAX_fw658" alt="banner image" referrerpolicy="no-referrer">
     </footer>
 
-    <!-- JavaScript：放在 body 最後面，和 index.html 同一層 -->
+    <!-- 右下角 中英文切換 -->
+    <button class="lang-btn" id="langBtn" aria-label="Switch language">
+        <img src="images/lang.png" alt="" onerror="this.style.display='none'">
+        <span id="langLabel">中文</span>
+    </button>
+
     <script src="script.js"></script>
 </body>
 </html>
