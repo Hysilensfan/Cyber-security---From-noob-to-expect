@@ -2,13 +2,17 @@
     --banner: #EE82EE;      /* 橫幅顏色 */
     --purple: #6a1b9a;      /* 深紫：文字、邊框 */
     --yellow: #FFD93D;      /* 黃色：強調色 */
-    --btn-img: url("https://upload.wikimedia.org/wikipedia/commons/7/70/Cuboid_no_label.svg?utm_source=zh.wikipedia.org&utm_campaign=index&utm_content=original");
+    --btn-img: url("https://upload.wikimedia.org/wikipedia/commons/7/70/Cuboid_no_label.svg");
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -18,10 +22,8 @@ body {
     font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
     color: var(--purple);
 
-    /* 背景圖失效時，至少還有這個黃色底，不會變成一片白 */
+    /* 背景圖失效時，至少還有這個黃色底 */
     background-color: #fff3b8;
-
-    /* 半透明罩層 + 背景圖，文字才看得清楚 */
     background-image:
         linear-gradient(rgba(255, 245, 200, .55), rgba(238, 130, 238, .35)),
         url("https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/476166917_639190511956476_2830561025047740793_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1152&ctp=s960x960&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iXI0xsfYiJkQ7kNvwF3RXND&_nc_oc=AdrK-Pc-9Q0ecLNocMjby9leBLwytdLZ3v8IaA71_wbV0F02aCaJd2C5XSfaXE3PGuA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=unmpNRCjOrUQsbIs0DM54g&_nc_ss=7b289&oh=00_AQMMsCsxxEgcqOIQPIc3eH_Z1G4pUYBv_-EkyRcRFTWnpQ&oe=6AC62072");
@@ -34,10 +36,10 @@ body {
 /* ===== 橫幅 header / footer ===== */
 .banner {
     background: var(--banner);
-    height: clamp(70px, 12vw, 140px);   /* 橫幅高度隨螢幕變化 */
+    height: clamp(70px, 12vw, 140px);
     display: flex;
     align-items: center;
-    justify-content: space-between;     /* 圖片貼最右邊 */
+    justify-content: space-between;
     overflow: hidden;
     box-shadow: 0 4px 0 var(--yellow);
 }
@@ -47,7 +49,7 @@ footer.banner {
 }
 
 .banner .title {
-    padding-left: 90px;                 /* 留位置給左上角 Menu */
+    padding-left: 90px;
     font-size: clamp(1.1rem, 3.5vw, 2.2rem);
     font-weight: 800;
     color: #fff;
@@ -60,7 +62,7 @@ footer.banner .title {
 }
 
 .banner img {
-    height: 100%;                       /* 圖片高度跟著橫幅走 */
+    height: 100%;
     width: auto;
     object-fit: contain;
     display: block;
@@ -95,7 +97,6 @@ footer.banner .title {
     height: 30px;
 }
 
-/* 之後有圖片檔的話，把 <svg> 換成 <img src="menu.png"> 即可 */
 .menu-list {
     display: none;
     margin-top: 8px;
@@ -108,6 +109,13 @@ footer.banner .title {
 
 .menu-list.open {
     display: block;
+}
+
+/* 滑鼠「碰到」就展開（只在有滑鼠的裝置生效，手機仍用點擊） */
+@media (hover: hover) {
+    .menu-wrap:hover .menu-list {
+        display: block;
+    }
 }
 
 .menu-list a {
@@ -175,13 +183,14 @@ h2 {
     font-weight: 600;
 }
 
-/* ===== MISC 往下展開 ===== */
-.misc-wrap {
+/* ===== 每個領域（按鈕＋往下展開的子選單） ===== */
+.group {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 14px;
+    scroll-margin-top: 16px;
 }
 
 .sub-list {
@@ -217,4 +226,33 @@ h2 {
         opacity: 1;
         transform: none;
     }
+}
+
+/* ===== 右下角 中英文切換按鈕 ===== */
+.lang-btn {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 3px solid var(--purple);
+    border-radius: 999px;
+    background: var(--yellow);
+    color: var(--purple);
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.lang-btn:hover {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.lang-btn img {
+    height: 32px;
+    width: auto;
+    display: block;
 }
