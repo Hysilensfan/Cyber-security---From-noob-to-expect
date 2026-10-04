@@ -1,3 +1,52 @@
+/* ===== 分隔線 ===== */
+.divider {
+    width: 100%;
+    height: 6px;
+    margin: 14px 0 6px;
+    border: none;
+    border-radius: 999px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--purple) 0 16px,
+        var(--yellow) 16px 32px
+    );
+}
+
+/* ===== Head3 說明文字 ===== */
+.ai-note {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: clamp(1rem, 2.8vw, 1.3rem);
+    line-height: 1.7;
+    color: var(--purple);
+    background: rgba(255, 255, 255, .8);
+    border-left: 8px solid var(--yellow);
+    border-radius: 12px;
+}
+
+/* ===== AI Security：按鈕在左、圖片在右 ===== */
+.ai-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.ai-row .img-btn {
+    width: auto;            /* 覆蓋原本的 min(100%, 420px) */
+    flex: 0 1 420px;        /* 最大 420px，空間不夠時可以縮小 */
+    min-width: 0;
+}
+
+.ai-img {
+    flex-shrink: 0;
+    height: 120px;          /* 圖片大小在這裡調 */
+    width: auto;
+    max-width: 32%;
+    object-fit: contain;
+}
+
 :root {
     --banner: #EE82EE;      /* 橫幅顏色 */
     --purple: #6a1b9a;      /* 深紫：文字、邊框 */
