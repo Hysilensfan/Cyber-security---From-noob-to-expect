@@ -12,9 +12,17 @@
     );
 }
 
-/* ===== Head3 說明文字 ===== */
-.ai-note {
+/* ===== H3 文字（左）＋ 圖片（右）===== */
+.ai-intro {
     width: 100%;
+    display: flex;
+    align-items: center;     /* 圖片跟文字上下置中 */
+    gap: 16px;
+}
+
+.ai-note {
+    flex: 1;                 /* 文字吃掉剩下的空間，圖片靠右 */
+    min-width: 0;            /* 允許文字換行縮小，避免被擠出去 */
     padding: 14px 18px;
     font-size: clamp(1rem, 2.8vw, 1.3rem);
     line-height: 1.7;
@@ -24,27 +32,19 @@
     border-radius: 12px;
 }
 
-/* ===== AI Security：按鈕在左、圖片在右 ===== */
-.ai-row {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-}
-
-.ai-row .img-btn {
-    width: auto;            /* 覆蓋原本的 min(100%, 420px) */
-    flex: 0 1 420px;        /* 最大 420px，空間不夠時可以縮小 */
-    min-width: 0;
-}
-
 .ai-img {
-    flex-shrink: 0;
-    height: 120px;          /* 圖片大小在這裡調 */
+    flex-shrink: 0;          /* 圖片不要被文字擠扁 */
+    height: 140px;           /* 圖片大小在這裡調 */
     width: auto;
     max-width: 32%;
     object-fit: contain;
+}
+
+/* ===== AI Security 按鈕列 ===== */
+.ai-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 :root {
