@@ -20,9 +20,15 @@
     gap: 16px;
 }
 
+.ai-text {
+    flex: 1;                 /* 文字欄吃掉剩下的空間，圖片靠右 */
+    min-width: 0;            /* 允許縮小，避免把圖片擠出去 */
+    display: flex;
+    flex-direction: column;  /* 兩段 H3 上下排列 */
+    gap: 10px;               /* 兩段之間的間距 */
+}
+
 .ai-note {
-    flex: 1;                 /* 文字吃掉剩下的空間，圖片靠右 */
-    min-width: 0;            /* 允許文字換行縮小，避免被擠出去 */
     padding: 14px 18px;
     font-size: clamp(1rem, 2.8vw, 1.3rem);
     line-height: 1.7;
