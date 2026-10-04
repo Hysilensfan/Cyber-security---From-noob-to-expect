@@ -305,3 +305,12 @@ h2 {
     width: auto;
     display: block;
 }
+
+@media (max-width: 560px) {
+    .ai-intro {
+        flex-direction: column;
+    }
+    .ai-img {
+        max-width: 60%;
+    }
+}
