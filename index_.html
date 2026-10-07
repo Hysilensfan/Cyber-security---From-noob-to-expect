@@ -4,199 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber - security/index</title>  <!-- The title -->
-    <style>
-        :root {
-            --banner: #EE82EE;      /* 橫幅顏色 */
-            --purple: #6a1b9a;      /* 深紫：文字、邊框 */
-            --yellow: #FFD93D;      /* 黃色：強調色 */
-            --btn-img: url("https://png.pngtree.com/png-vector/20220404/ourmid/pngtree-buttons-games-button-illustration-blue-png-image_4526877.png");
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-            color: var(--purple);
-            /* 半透明紫色罩層 + 背景圖，文字才看得清楚 */
-            background:
-                linear-gradient(rgba(255, 245, 200, .55), rgba(238, 130, 238, .35)),
-                url("https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/476166917_639190511956476_2830561025047740793_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1152&ctp=s960x960&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iXI0xsfYiJkQ7kNvwF3RXND&_nc_oc=AdrK-Pc-9Q0ecLNocMjby9leBLwytdLZ3v8IaA71_wbV0F02aCaJd2C5XSfaXE3PGuA&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=unmpNRCjOrUQsbIs0DM54g&_nc_ss=7b289&oh=00_AQMMsCsxxEgcqOIQPIc3eH_Z1G4pUYBv_-EkyRcRFTWnpQ&oe=6AC62072")
-                center / cover fixed no-repeat;
-        }
-
-        /* ===== 橫幅 header / footer ===== */
-        .banner {
-            background: var(--banner);
-            height: clamp(70px, 12vw, 140px);   /* 橫幅高度隨螢幕變化 */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;     /* 圖片貼最右邊 */
-            overflow: hidden;
-            box-shadow: 0 4px 0 var(--yellow);
-        }
-        footer.banner { box-shadow: 0 -4px 0 var(--yellow); }
-        .banner .title {
-            padding-left: 90px;                 /* 留位置給左上角 Menu */
-            font-size: clamp(1.1rem, 3.5vw, 2.2rem);
-            font-weight: 800;
-            color: #fff;
-            text-shadow: 2px 2px 0 var(--purple);
-        }
-        footer.banner .title { padding-left: 20px; font-size: clamp(.9rem, 2.5vw, 1.4rem); }
-        .banner img {
-            height: 100%;                       /* 圖片高度跟著橫幅走 */
-            width: auto;
-            object-fit: contain;
-            display: block;
-        }
-
-        /* ===== 左上角 Menu ===== */
-        .menu-wrap { position: fixed; top: 12px; left: 12px; z-index: 10; }
-        .menu-btn {
-            width: 56px; height: 56px;
-            border: 3px solid var(--purple);
-            border-radius: 50%;
-            background: var(--yellow);
-            cursor: pointer;
-            display: grid; place-items: center;
-            transition: transform .2s;
-        }
-        .menu-btn:hover { transform: rotate(-8deg) scale(1.1); }
-        .menu-btn svg { width: 30px; height: 30px; }
-        /* 之後有圖片檔的話，把 <svg> 換成 <img src="menu.png"> 即可 */
-        .menu-list {
-            display: none;
-            margin-top: 8px;
-            background: #fff;
-            border: 3px solid var(--purple);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 210px;
-        }
-        .menu-list.open { display: block; }
-        .menu-list a {
-            display: block; padding: 8px 12px;
-            color: var(--purple); text-decoration: none; font-weight: 700;
-            border-radius: 10px;
-        }
-        .menu-list a:hover { background: var(--yellow); }
-
-        /* ===== main ===== */
-        main {
-            flex: 1;
-            width: min(92%, 760px);
-            margin: 0 auto;
-            padding: 32px 0 48px;
-            display: flex; flex-direction: column; align-items: center; gap: 18px;
-        }
-        h2 {
-            text-align: center;
-            font-size: clamp(1.4rem, 4.5vw, 2.4rem);
-            color: var(--yellow);
-            -webkit-text-stroke: 2px var(--purple);
-            paint-order: stroke fill;
-            text-shadow: 3px 3px 0 var(--purple);
-            margin-bottom: 8px;
-        }
-
-        /* ===== 按鈕：使用圖片當按鈕底 ===== */
-        .img-btn {
-            width: min(100%, 420px);
-            min-height: 78px;
-            padding: 14px 40px;
-            border: none;
-            background: var(--btn-img) center / 100% 100% no-repeat transparent;
-            color: #fff;
-            font-size: 1.15rem; font-weight: 800;
-            text-shadow: 0 2px 3px rgba(0, 0, 0, .6);
-            cursor: pointer;
-            transition: transform .15s, filter .15s;
-        }
-        .img-btn:hover { transform: translateY(-4px) scale(1.04) rotate(-1deg); filter: brightness(1.15); }
-        .img-btn:active { transform: translateY(2px) scale(.97); }
-        .img-btn small { display: block; font-size: .8rem; font-weight: 600; }
-
-        /* ===== MISC 往下展開 ===== */
-        .misc-wrap { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-        .sub-list {
-            display: none;
-            width: 100%;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 10px;
-            justify-items: center;
-            padding: 16px;
-            background: rgba(255, 255, 255, .6);
-            border: 3px dashed var(--purple);
-            border-radius: 20px;
-        }
-        .sub-list.open { display: grid; animation: drop .3s ease; }
-        .sub-list .img-btn { min-height: 64px; font-size: 1rem; padding: 10px 28px; }
-        @keyframes drop { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 左上角 Menu -->
+    <!-- 左上角 Menu：滑鼠移上去就會打開，點擊也可以（手機用） -->
     <div class="menu-wrap">
-        <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <button class="menu-btn" id="menuBtn" data-toggle="menuList" aria-label="Menu" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="#6a1b9a" stroke-width="3" stroke-linecap="round">
                 <path d="M4 7h16M4 12h16M4 17h16"/>
             </svg>
         </button>
         <nav class="menu-list" id="menuList">
-            <a href="#">Web Security</a>
-            <a href="#">Reverse Engineering</a>
-            <a href="#">Crypto</a>
-            <a href="#">PWN</a>
-            <a href="#">MISC</a>
+            <a href="#grpWeb"    data-zh="網頁安全">Web Security</a>
+            <a href="#grpRev"    data-zh="逆向工程">Reverse Engineering</a>
+            <a href="#grpCrypto" data-zh="密碼學">Crypto</a>
+            <a href="#grpPwn"    data-zh="PWN">PWN</a>
+            <a href="#grpMisc"   data-zh="MISC">MISC</a>
         </nav>
     </div>
 
     <header class="banner">
-        <span class="title">Cyber Security</span>
-        <img src="https://gd-hbimg.huaban.com/46ae767fe82ab1ef3d2405ead3c0c043c558d28cc11f7-VFiOAX_fw658" alt="banner image">
+        <span class="title" data-zh="資訊安全">Cyber Security</span>
+        <img src="https://gd-hbimg.huaban.com/46ae767fe82ab1ef3d2405ead3c0c043c558d28cc11f7-VFiOAX_fw658" alt="banner image" referrerpolicy="no-referrer">
     </header>
 
     <main>
-        <h2>Cyber security - Five major areas</h2>
+        <h2 data-zh="資訊安全 - 五大領域">Cyber security - Five major areas</h2>
 
-        <button class="img-btn">Web Security</button>
-        <button class="img-btn">Reverse Engineering</button>
-        <button class="img-btn">Crypto</button>
-        <button class="img-btn">PWN<small>(Binary Vulnerability Exploitation)</small></button>
-
-        <div class="misc-wrap">
-            <button class="img-btn" id="miscBtn" aria-expanded="false" aria-controls="subList">MISC<small>(Miscellaneous)</small></button>
-            <div class="sub-list" id="subList">
-                <button class="img-btn">OSINT</button>
-                <button class="img-btn">Forensics</button>
-                <button class="img-btn">Stego</button>
-                <button class="img-btn">Block chain</button>
-                <button class="img-btn">Traffic</button>
-                <button class="img-btn">Flask/Jail</button>
-                <button class="img-btn">Linux/Windows command</button>
-                <button class="img-btn">Source code Analysis/Coding</button>
-                <button class="img-btn">Else option</button>
+        <!-- 1. Web Security -->
+        <div class="group" id="grpWeb">
+            <button class="img-btn" data-toggle="subWeb" aria-expanded="false" aria-controls="subWeb" data-zh="網頁安全">Web Security</button>
+            <div class="sub-list" id="subWeb">
+                <button class="img-btn"><span data-zh="基礎知識">Basics</span></button>
+                <button class="img-btn"><span data-zh="XSS">XSS</span><small data-zh="(跨站腳本攻擊)">(Cross-site scripting)</small></button>
+                <button class="img-btn"><span data-zh="CSRF">CSRF</span><small data-zh="(跨站請求偽造)">(Cross site request forgery)</small></button>
+                <button class="img-btn"><span data-zh="DOS">DOS</span><small data-zh="(阻斷服務攻擊)">(Denial of service)</small></button>
+                <button class="img-btn"><span data-zh="DDOS">DDOS</span><small data-zh="(分散式阻斷服務攻擊)">(Distributed DOS)</small></button>
+                <button class="img-btn"><span data-zh="IDOR">IDOR</span><small data-zh="(不安全的直接物件參考漏洞)">(Insecure Direct Object Reference Vulnerability)</small></button>
+                <button class="img-btn" data-zh="點擊劫持">Click Jacking</button>
+                <button class="img-btn" data-zh="指令注入">Command injection</button>
+                <button class="img-btn" data-zh="一般網路釣魚">Common Phishing</button>
+                <button class="img-btn" data-zh="魚叉式網路釣魚">Spear Phishing</button>
+                <button class="img-btn" data-zh="鯨釣式網路釣魚">Whaling Phishing</button>
+                <button class="img-btn" data-zh="網址修改">URL manipulation</button>
+                <button class="img-btn" data-zh="Session 劫持">Session Hijacking</button>
+                <button class="img-btn" data-zh="路徑遍歷">Path Traversal</button>
+                <button class="img-btn" data-zh="其他項目">Else option</button>
             </div>
+        </div>
+
+        <!-- 2. Reverse Engineering -->
+        <div class="group" id="grpRev">
+            <button class="img-btn" data-toggle="subRev" aria-expanded="false" aria-controls="subRev" data-zh="逆向工程">Reverse Engineering</button>
+            <div class="sub-list" id="subRev">
+                <button class="img-btn" data-zh="電腦系統架構">Computer system architecture</button>
+                <button class="img-btn" data-zh="靜態分析">Static analysis</button>
+                <button class="img-btn" data-zh="動態分析">Dynamic analysis</button>
+                <button class="img-btn" data-zh="除錯工具">Debug tools</button>
+                <button class="img-btn" data-zh="記憶體存取">Memory access</button>
+                <button class="img-btn" data-zh="CPU 工作流程">CPU workflow</button>
+                <button class="img-btn" data-zh="漏洞分析">Vulnerability Analysis</button>
+                <button class="img-btn" data-zh="破解與修補">Crack and Pitch</button>
+                <button class="img-btn" data-zh="修改與測試">Modification and testing</button>
+                <button class="img-btn" data-zh="其他項目">Else option</button>
+            </div>
+        </div>
+
+        <!-- 3. Crypto -->
+        <div class="group" id="grpCrypto">
+            <button class="img-btn" data-toggle="subCrypto" aria-expanded="false" aria-controls="subCrypto" data-zh="密碼學">Crypto</button>
+            <div class="sub-list" id="subCrypto">
+                <button class="img-btn" data-zh="編碼(解碼)">En(De)coding</button>
+                <button class="img-btn" data-zh="加密(解密)">En(De)crption</button>
+                <button class="img-btn" data-zh="CIA 三要素">The CIA Triad</button>
+                <button class="img-btn" data-zh="對稱式密碼學">Symmetric Cryptography</button>
+                <button class="img-btn" data-zh="非對稱式密碼學">Asymmetric Cryptography</button>
+                <button class="img-btn" data-zh="數位簽章">Digital Signature</button>
+                <button class="img-btn" data-zh="字典攻擊">Dictionary Attack</button>
+                <button class="img-btn"><span data-zh="MITM">MITM</span><small data-zh="(中間人攻擊)">(Man in the middle)</small></button>
+                <button class="img-btn" data-zh="雜湊值">Hash values</button>
+                <button class="img-btn" data-zh="生日攻擊">birthday</button>
+                <button class="img-btn" data-zh="身分驗證">Identity verification</button>
+                <button class="img-btn" data-zh="其他項目">Else option</button>
+            </div>
+        </div>
+
+        <!-- 4. PWN -->
+        <div class="group" id="grpPwn">
+            <button class="img-btn" data-toggle="subPwn" aria-expanded="false" aria-controls="subPwn"><span data-zh="PWN">PWN</span><small data-zh="(二進位漏洞利用)">(Binary Vulnerability Exploitation)</small></button>
+            <div class="sub-list" id="subPwn">
+                <button class="img-btn" data-zh="零日(一日)漏洞">Zero(One) Day</button>
+                <button class="img-btn" data-zh="記憶體破壞">Memory Corruption</button>
+                <button class="img-btn" data-zh="防護機制繞過">Mitigation Bypasses</button>
+                <button class="img-btn" data-zh="核心與虛擬機監控器">Kernel &amp; Hypervisor</button>
+                <button class="img-btn" data-zh="其他項目">Else option</button>
+            </div>
+        </div>
+
+        <!-- 5. MISC -->
+        <div class="group" id="grpMisc">
+            <button class="img-btn" data-toggle="subMisc" aria-expanded="false" aria-controls="subMisc"><span data-zh="MISC">MISC</span><small data-zh="(雜項)">(Miscellaneous)</small></button>
+            <div class="sub-list" id="subMisc">
+                <button class="img-btn" data-zh="開源情報">OSINT</button>
+                <button class="img-btn" data-zh="數位鑑識">Forensics</button>
+                <button class="img-btn" data-zh="隱寫術">Stego</button>
+                <button class="img-btn" data-zh="區塊鏈">Block chain</button>
+                <button class="img-btn" data-zh="流量分析">Traffic</button>
+                <button class="img-btn" data-zh="Flask / 沙箱逃逸">Flask/Jail</button>
+                <button class="img-btn" data-zh="Linux / Windows 指令">Linux/Windows command</button>
+                <button class="img-btn" data-zh="原始碼分析 / 程式設計">Source code Analysis/Coding</button>
+                <button class="img-btn" data-zh="其他項目">Else option</button>
+            </div>
+        </div>
+        <!-- 分隔線 -->
+        <hr class="divider">
+
+        <!-- 說明文字（Head3） -->
+        <div class="ai-intro">
+            <div class="ai-text">
+                <h3 class="ai-note"
+                    data-zh="這裡特別獨立出來，是因為:">
+                    This section stands on its own because:
+                </h3>
+                <h3 class="ai-note"
+                    data-zh="傳統資安處理的是「程式碼的漏洞與邏輯」，而 AI 安全面對的是「數據、機率與模型行為的不確定性」">
+                    Traditional security deals with "flaws and logic in code", while AI security faces "the uncertainty of data, probability, and model behavior".
+                </h3>
+        </div>
+            <img class="ai-img" src="https://stickershop.line-scdn.net/stickershop/v1/product/25567096/LINEStorePC/main.png" alt="AI Security image" referrerpolicy="no-referrer">
+        </div>
+
+        <!-- AI 按鈕 -->
+        <div class="ai-row">
+            <button class="img-btn" data-zh="AI(人工智慧)">AI(Artificial Intelligence)</button>
         </div>
     </main>
 
     <footer class="banner">
-        <span class="title">© Cyber Security</span>
-        <img src="https://gd-hbimg.huaban.com/46ae767fe82ab1ef3d2405ead3c0c043c558d28cc11f7-VFiOAX_fw658" alt="banner image">
+        <span class="title" data-zh="© 資訊安全">© Cyber Security</span>
+        <img src="https://gd-hbimg.huaban.com/46ae767fe82ab1ef3d2405ead3c0c043c558d28cc11f7-VFiOAX_fw658" alt="banner image" referrerpolicy="no-referrer">
     </footer>
 
-    <script>
-        // 通用的「點一下開／關」功能
-        function toggle(btn, target) {
-            btn.addEventListener('click', () => {
-                const open = target.classList.toggle('open');
-                btn.setAttribute('aria-expanded', open);
-            });
-        }
-        toggle(document.getElementById('menuBtn'), document.getElementById('menuList'));
-        toggle(document.getElementById('miscBtn'), document.getElementById('subList'));
-    </script>
+    <!-- 右下角 中英文切換 -->
+    <button class="lang-btn" id="langBtn" aria-label="Switch language">
+        <img src="images/lang.png" alt="" onerror="this.style.display='none'">
+        <span id="langLabel">中文</span>
+    </button>
+
+    <script src="script.js"></script>
 </body>
 </html>
