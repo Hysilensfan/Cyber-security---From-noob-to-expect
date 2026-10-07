@@ -1,0 +1,51 @@
+:root { --banner:#EE82EE; --purple:#6a1b9a; --yellow:#FFD93D; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+    min-height:100vh; display:flex; flex-direction:column;
+    font-family:"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif; color:#2b1b3a;
+    background-color:#fff3b8;
+    background-image:
+        linear-gradient(rgba(255,245,200,.55), rgba(238,130,238,.35)),
+        url("https://i0.wp.com/upload-os-bbs.hoyolab.com/upload/2025/09/05/ad990432ba2de485dec72e9ac63da405_1917901097559349707.jpg?ssl=1");
+    background-position:center; background-size:cover; background-attachment:fixed; background-repeat:no-repeat;
+}
+/* 只有上橫幅 */
+.banner {
+    background:var(--banner); height:clamp(70px,12vw,140px);
+    display:flex; align-items:center; justify-content:space-between;
+    overflow:hidden; box-shadow:0 4px 0 var(--yellow);
+}
+.banner .title {
+    padding-left:24px; font-size:clamp(1.2rem,3.8vw,2.4rem); font-weight:800;
+    color:#fff; text-shadow:2px 2px 0 var(--purple);
+}
+.banner img { height:100%; width:auto; object-fit:contain; display:block; }
+
+main { flex:1; width:min(94%,860px); margin:0 auto; padding:28px 0 64px; }
+.note {
+    padding:clamp(16px,4vw,36px); background:rgba(255,255,255,.92);
+    border:3px solid var(--purple); border-radius:20px; line-height:1.9;
+}
+.note h2 { margin:1.6em 0 .6em; padding-left:12px; border-left:8px solid var(--yellow); color:var(--purple); }
+.note h3 { margin:1.3em 0 .5em; color:var(--purple); }
+.note h4 { margin:1.1em 0 .4em; color:var(--purple); }
+.note p, .note ul, .note ol { margin:.7em 0; }
+.note ul, .note ol { padding-left:1.6em; }
+.note a { color:var(--purple); word-break:break-all; }
+.note hr { border:none; height:4px; margin:1.6em 0; border-radius:99px;
+    background:repeating-linear-gradient(90deg,var(--purple) 0 14px,var(--yellow) 14px 28px); }
+.note code { padding:2px 6px; border-radius:6px; background:#f1e4fa; color:var(--purple); font-size:.92em; }
+.note pre { margin:1em 0; padding:14px 16px; overflow-x:auto; border-radius:12px; background:#2d1b3d; line-height:1.6; }
+.note pre code { padding:0; background:none; color:#ffe98a; }
+.note table { width:100%; margin:1em 0; border-collapse:collapse; display:block; overflow-x:auto; }
+.note th, .note td { padding:8px 12px; border:2px solid var(--purple); text-align:left; min-width:120px; }
+.note th { background:var(--yellow); color:var(--purple); }
+
+.lang-btn {
+    position:fixed; right:16px; bottom:16px; z-index:10;
+    display:flex; align-items:center; gap:6px; padding:8px 14px;
+    border:3px solid var(--purple); border-radius:999px;
+    background:var(--yellow); color:var(--purple); font-weight:800; cursor:pointer;
+}
+.lang-btn:hover { transform:scale(1.1) rotate(3deg); }
+.lang-btn img { height:32px; width:auto; display:block; }
